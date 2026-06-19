@@ -1,0 +1,10 @@
+:root {
+    --primary-color: #2a479a;
+    --primary-hover: #1f3678;
+    --background: #f5f5f5;
+    --text-dark: #1a1a1a;
+    --text-light: #ffffff;
+    --border-color: #ddd;
+    --error: red;
+    --success: green;    
+}
