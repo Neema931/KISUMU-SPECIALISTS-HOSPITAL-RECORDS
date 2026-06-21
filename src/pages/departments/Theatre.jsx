@@ -1,9 +1,10 @@
 import MainLayout from "../../layouts/MainLayout";
+import TheatreForm from "../../components/forms/TheatreForm";
 
 function Theatre() {
   return (
     <MainLayout>
-      <h1>Theatre Dashboard</h1>
+      <TheatreForm />
     </MainLayout>
   );
 }

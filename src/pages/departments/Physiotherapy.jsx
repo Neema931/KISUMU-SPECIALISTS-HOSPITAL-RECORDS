@@ -1,9 +1,10 @@
 import MainLayout from "../../layouts/MainLayout";
+import physioForms from "../../components/forms/physioForms";
 
 function Physiotherapy() {
   return (
     <MainLayout>
-      <h1>Physiotherapy Dashboard</h1>
+      <physioForms />
     </MainLayout>
   );
 }

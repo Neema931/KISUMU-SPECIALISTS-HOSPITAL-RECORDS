@@ -1,9 +1,10 @@
 import MainLayout from "../../layouts/MainLayout";
+import RadiologyForm from "../../components/forms/RadiologyForm";
 
 function Radiology() {
   return (
     <MainLayout>
-      <h1>Radiology Dashboard</h1>
+      <RadiologyForm />
     </MainLayout>
   );
 }

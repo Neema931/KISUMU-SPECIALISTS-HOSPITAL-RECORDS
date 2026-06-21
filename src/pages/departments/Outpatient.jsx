@@ -1,9 +1,10 @@
 import MainLayout from "../../layouts/MainLayout";
+import OPDForms from "../../components/forms/OPDForms";
 
 function Outpatient() {
   return (
     <MainLayout>
-      <h1>Outpatient Dashboard</h1>
+      <OPDForms />
     </MainLayout>
   );
 }

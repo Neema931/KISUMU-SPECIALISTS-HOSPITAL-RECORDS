@@ -1,11 +1,12 @@
-import MainLayout from "../../Layouts/MainLayout";
+import MainLayout from "../../layouts/MainLayout";
+import MedSurgForm from "../../components/forms/MedSurgForms";
 
 function MedSurg() {
-    return(
+  return (
     <MainLayout>
-        <h1>MedSurg</h1>
-    </MainLayout>   
-    );
+      <MedSurgForm />
+    </MainLayout>
+  );
 }
 
 export default MedSurg;

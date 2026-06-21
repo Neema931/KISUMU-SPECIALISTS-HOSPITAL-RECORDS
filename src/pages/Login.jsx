@@ -2,9 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import api from '../services/api';
 
-import Navbar from '../components/Navbar';
 import "./styles.css";
-import sidebar from '../components/Sidebar';
 
 import logo from "../assets/logo.png";
 
