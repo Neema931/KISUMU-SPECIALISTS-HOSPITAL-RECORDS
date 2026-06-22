@@ -22,8 +22,9 @@ function Login() {
         try {
             const response = await api.post("/auth/login", { email, password });
 
-            // save token
+            // save token and basic user info
             localStorage.setItem("token", response.data.token);
+            localStorage.setItem("user", JSON.stringify(response.data.user));
 
             // navigate to original destination or dashboard
             navigate(from, { replace: true });

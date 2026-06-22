@@ -1,12 +1,15 @@
 import { useState } from "react";
 import ReportForms from "./ReportForms";
 
-function physioForms() {
+function PhysioForms() {
   const [formData, setFormData] = useState({
     reportDate: "",
     shift: "Day",
     outpatient: "",
     inpatient: "",
+    sessionsCompleted: "",
+    assessments: "",
+    followUps: "",
   });
 
   const handleChange = (e) => {
@@ -16,16 +19,23 @@ function physioForms() {
     });
   };
 
-  const cumulative =
+  const totalPatients =
     (Number(formData.outpatient) || 0) +
     (Number(formData.inpatient) || 0);
+
+  const totalActivities =
+    totalPatients +
+    (Number(formData.sessionsCompleted) || 0) +
+    (Number(formData.assessments) || 0) +
+    (Number(formData.followUps) || 0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const report = {
       ...formData,
-      cumulative,
+      totalPatients,
+      totalActivities,
     };
 
     console.log(report);
@@ -36,8 +46,8 @@ function physioForms() {
     <ReportForms
       title="Physiotherapy Daily Report"
       onSubmit={handleSubmit}
+      department={"Physiotherapy"}
     >
-      <div className="form-grid">
 
         {/* Date */}
         <div className="form-group">
@@ -88,20 +98,22 @@ function physioForms() {
           />
         </div>
 
-        {/* Cumulative */}
+     {/*cumulative */}
         <div className="form-group">
           <label>Cumulative</label>
           <input
             type="number"
-            value={cumulative}
+            name="totalPatients"
+            value={totalPatients}
             readOnly
             className="readonly-field"
           />
         </div>
+    
 
-      </div>
+      
     </ReportForms>
   );
 }
 
-export default physioForms;
+export default PhysioForms;

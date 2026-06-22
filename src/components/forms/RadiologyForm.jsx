@@ -42,9 +42,8 @@ function RadiologyForm() {
     <ReportForms
       title="Radiology Daily Report"
       onSubmit={handleSubmit}
+      department={"Radiology"}
     >
-      <div className="form-grid">
-
         {/* Date */}
         <div className="form-group">
           <label>Report Date</label>
@@ -130,18 +129,6 @@ function RadiologyForm() {
           />
         </div>
 
-        {/* Cumulative */}
-        <div className="form-group">
-          <label>Cumulative</label>
-          <input
-            type="number"
-            value={cumulative}
-            readOnly
-            className="readonly-field"
-          />
-        </div>
-
-      </div>
     </ReportForms>
   );
 }

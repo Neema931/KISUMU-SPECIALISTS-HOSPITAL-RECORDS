@@ -9,7 +9,10 @@ import Theatre from "./pages/departments/Theatre";
 import Outpatient from "./pages/departments/Outpatient";
 import MedSurg from "./pages/departments/MedSurg";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import Assignments from "./pages/admin/Assignments";
 import ProtectedRoute from "./components/ProtectedRoute";
+import HospitalSummary from "./pages/HospitalSummary";
+import ReportsArchive from "./pages/ReportsArchive";
 
 function App() {
   return (
@@ -73,6 +76,22 @@ function App() {
           }
         />
         <Route
+          path="/hospital-summary"
+          element={
+            <ProtectedRoute>
+              <HospitalSummary />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/reports-archive"
+          element={
+            <ProtectedRoute>
+              <ReportsArchive />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/medsurg"
           element={
             <ProtectedRoute>
@@ -85,6 +104,14 @@ function App() {
           element={
             <ProtectedRoute>
               <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/assignments"
+          element={
+            <ProtectedRoute>
+              <Assignments />
             </ProtectedRoute>
           }
         />

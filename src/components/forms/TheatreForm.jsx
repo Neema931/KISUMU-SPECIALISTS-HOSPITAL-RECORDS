@@ -36,9 +36,9 @@ function TheatreForm() {
     <ReportForms
       title="Theatre Daily Report"
       onSubmit={handleSubmit}
+      department={"Theatre"}
     >
-      <div className="form-grid">
-
+    
         {/* Date */}
         <div className="form-group">
           <label>Report Date</label>
@@ -99,7 +99,6 @@ function TheatreForm() {
           />
         </div>
 
-      </div>
     </ReportForms>
   );
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ReportForms from "./ReportForms";
 
-function labForms() {
+function LabForms() {
   const [formData, setFormData] = useState({
     reportDate: "",
     shift: "Day",
@@ -15,12 +15,16 @@ function labForms() {
     });
   };
 
+  const totalLabActivity =
+    (Number(formData.bloodAvailable) || 0);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const report = {
       ...formData,
       bloodAvailable: Number(formData.bloodAvailable) || 0,
+      totalLabActivity,
     };
 
     console.log(report);
@@ -31,8 +35,8 @@ function labForms() {
     <ReportForms
       title="Laboratory Daily Report"
       onSubmit={handleSubmit}
+      department={"Laboratory"}
     >
-      <div className="form-grid">
 
         {/* Date */}
         <div className="form-group">
@@ -71,10 +75,8 @@ function labForms() {
             required
           />
         </div>
-
-      </div>
     </ReportForms>
   );
 }
 
-export default labForms;
+export default LabForms;

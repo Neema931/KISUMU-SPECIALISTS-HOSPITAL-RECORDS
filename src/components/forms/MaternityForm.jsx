@@ -38,12 +38,38 @@ function MaternityForm() {
     alert("Maternity report submitted successfully!");
   };
 
+  const submitToApi = async (e) => {
+    e.preventDefault();
+
+    const report = {
+      department: "Maternity",
+      report_date: formData.reportDate,
+      shift: formData.shift,
+      data: {
+        totalPatients: Number(formData.totalPatients) || 0,
+        anc: Number(formData.anc) || 0,
+        pnc: Number(formData.pnc) || 0,
+        sickBabies: Number(formData.sickBabies) || 0,
+        wellBabies: Number(formData.wellBabies) || 0,
+        cumulative: cumulative,
+      },
+    };
+
+    try {
+      const res = await (await import("../../services/api")).default.post("/reports/department", report);
+      alert(res.data.message);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to submit maternity report");
+    }
+  };
+
   return (
     <ReportForms
       title="Maternity Daily Report"
-      onSubmit={handleSubmit}
+      onSubmit={submitToApi}
+      department={"Maternity"}
     >
-      <div className="form-grid">
 
         {/* Date */}
         <div className="form-group">
@@ -140,8 +166,6 @@ function MaternityForm() {
             className="readonly-field"
           />
         </div>
-
-      </div>
     </ReportForms>
   );
 }

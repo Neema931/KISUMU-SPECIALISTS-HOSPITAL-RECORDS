@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ReportForms from "./ReportForms";
-import API from "../../service/api";
+import api from "../../services/api";
 
 function OPDForms() {
   const [formData, setFormData] = useState({
@@ -40,7 +40,7 @@ function OPDForms() {
     };
 
     try {
-      const res = await API.post("/reports/department", report);
+      const res = await api.post("/reports/department", report);
 
       alert(res.data.message);
     } catch (err) {
@@ -50,9 +50,8 @@ function OPDForms() {
   };
 
   return (
-    <ReportForms title="Outpatient Daily Report" onSubmit={handleSubmit}>
-      <div className="form-grid">
-
+    <ReportForms title="Outpatient Daily Report" onSubmit={handleSubmit} department={"Outpatient"}>
+     
         <div className="form-group">
           <label>Report Date</label>
           <input
@@ -111,18 +110,6 @@ function OPDForms() {
             required
           />
         </div>
-
-        <div className="form-group">
-          <label>Total Patients</label>
-          <input
-            type="number"
-            value={totalPatients}
-            className="readonly-field"
-            readOnly
-          />
-        </div>
-
-      </div>
     </ReportForms>
   );
 }

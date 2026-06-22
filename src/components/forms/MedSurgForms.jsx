@@ -39,8 +39,8 @@ function MedSurgForms() {
     <ReportForms
       title="MedSurg Daily Report"
       onSubmit={handleSubmit}
+      department={"MedSurg"}
     >
-      <div className="form-grid">
 
         {/* Date */}
         <div className="form-group">
@@ -126,7 +126,6 @@ function MedSurgForms() {
           />
         </div>
 
-      </div>
     </ReportForms>
   );
 }

@@ -1,10 +1,10 @@
 import MainLayout from "../../layouts/MainLayout";
-import labForms from "../../components/forms/labForms";
+import LabForms from "../../components/forms/labForms";
 
 function Laboratory() {
   return (
     <MainLayout>
-      <labForms />
+      <LabForms />
     </MainLayout>
   );
 }
