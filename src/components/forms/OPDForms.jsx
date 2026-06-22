@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ReportForms from "./ReportForms";
+import API from "../../service/api";
 
 function OPDForms() {
   const [formData, setFormData] = useState({
@@ -22,29 +23,38 @@ function OPDForms() {
     (Number(formData.emergencies) || 0) +
     (Number(formData.medicalOfficers) || 0);
 
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const report = {
-      ...formData,
-      totalPatients,
+      department: "Outpatient",
+      shift: formData.shift,
+      report_date: formData.reportDate,
+      data: {
+        consultants: Number(formData.consultants) || 0,
+        emergencies: Number(formData.emergencies) || 0,
+        medical_officers: Number(formData.medicalOfficers) || 0,
+        total: totalPatients,
+      },
     };
 
-    console.log(report);
+    try {
+      const res = await API.post("/reports/department", report);
 
-    alert("Outpatient report submitted successfully!");
+      alert(res.data.message);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to submit report");
+    }
   };
 
   return (
-    <ReportForms
-      title="Outpatient Daily Report"
-      onSubmit={handleSubmit}
-    >
+    <ReportForms title="Outpatient Daily Report" onSubmit={handleSubmit}>
       <div className="form-grid">
 
         <div className="form-group">
           <label>Report Date</label>
-
           <input
             type="date"
             name="reportDate"
@@ -56,7 +66,6 @@ function OPDForms() {
 
         <div className="form-group">
           <label>Shift</label>
-
           <select
             name="shift"
             value={formData.shift}
@@ -69,7 +78,6 @@ function OPDForms() {
 
         <div className="form-group">
           <label>Consultants</label>
-
           <input
             type="number"
             name="consultants"
@@ -82,7 +90,6 @@ function OPDForms() {
 
         <div className="form-group">
           <label>Emergencies</label>
-
           <input
             type="number"
             name="emergencies"
@@ -95,7 +102,6 @@ function OPDForms() {
 
         <div className="form-group">
           <label>Medical Officers</label>
-
           <input
             type="number"
             name="medicalOfficers"
@@ -108,7 +114,6 @@ function OPDForms() {
 
         <div className="form-group">
           <label>Total Patients</label>
-
           <input
             type="number"
             value={totalPatients}
